@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: alexmalo-collection
+  description: A collection of Backstage Golden Path Templates for Alex Malo
+spec:
+  type: url
+  targets:
+    - https://github.com/alexandremalo/redhat-devhub-templates/blob/main/templates/azure-devops/java-backend/template.yaml

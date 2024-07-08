@@ -1,0 +1,111 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: azure-java-backend-template
+  title: Create a SpringBoot backend application in Azure DevOps with a CI pipeline
+  description: Create a starter SpringBoot backend application with a CI pipeline
+  tags:
+    - recommended
+    - springboot
+    - java
+    - azure
+spec:
+  owner: alex-malo
+  system: rhdh
+  type: service
+
+  parameters:
+    - title: Choose a location
+      required:
+        - orgName
+        - projectName
+        - repoName
+      properties:
+        orgName:
+          title: Organization
+          type: string
+          description: The Organization that this repo will belong to
+        projectName:
+          title: Project
+          type: string
+          description: The Project that this repo will belong to
+        repoName:
+          title: Repository
+          type: string
+          description: The name of the repository
+
+    - title: Provide information about the new component
+      required:
+        - port
+      properties:
+        title:
+          title: Title
+          type: string
+          default: please-give-me-a-name
+          description: The title of the component
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this component is for
+        port:
+          title: Port
+          type: number
+          default: 8080
+          description: Override the port exposed for the application
+
+  steps:
+    - id: sourceCodeTemplate
+      name: Generating the Source Code Component
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          # azure devops uses `my-project/my-repo`
+          orgName: ${{ parameters.projectName }}
+          repoName: ${{ parameters.repoName }}
+          title: ${{ parameters.title }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          applicationType: website
+          sourceControl: dev.azure.com
+
+    - id: catalogTemplate
+      name: Generating the Catalog Info Component
+      action: fetch:template
+      input:
+        url: ../../../catalog-info/
+        values:
+          # azure devops uses `my-project/my-repo`
+          orgName: ${{ parameters.projectName }}
+          repoName: ${{ parameters.repoName }}
+          owner: ${{ parameters.owner }}
+          system: ${{ parameters.system }}
+          title: ${{ parameters.title }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          applicationType: website
+          sourceControl: dev.azure.com
+
+    - id: publish
+      name: Publishing to the Source Code Repository
+      action: publish:azure
+      input:
+        allowedHosts: ['dev.azure.com']
+        description: ${{ parameters.description }}
+        repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
+        defaultBranch: main
+
+    - id: register
+      name: Registering the Catalog Info Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Open the Source Code Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open the Catalog Info Component
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
