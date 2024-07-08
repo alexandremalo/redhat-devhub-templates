@@ -92,8 +92,9 @@ spec:
       input:
         allowedHosts: ['dev.azure.com']
         description: ${{ parameters.description }}
-        repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
+        repoUrl: dev.azure.com?project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
         defaultBranch: main
+        token: ${AZURE_TOKEN}
 
     - id: register
       name: Registering the Catalog Info Component
