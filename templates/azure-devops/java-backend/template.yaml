@@ -45,12 +45,13 @@ spec:
 
     - title: Provide information about the new component
       required:
+        - sameNameAsRepo
         - port
       properties:
-        name:
-          title: Name
-          type: string
-          description: The name of the component (leave empty to re-use Repository name)
+        sameNameAsRepo:
+          title: Use Repository name as component name?
+          type: boolean
+          default: true
         description:
           title: Description
           type: string
@@ -60,6 +61,18 @@ spec:
           type: number
           default: 8080
           description: Override the port exposed for the application
+      dependencies:
+        sameNameAsRepo:
+          allOf:
+            - if:
+                properties:
+                  sameNameAsRepo:
+                    const: false
+              then:
+                properties:
+                  customName:
+                    title: Component name
+                    type: string
 
   steps:
     - id: sourceCodeTemplate
