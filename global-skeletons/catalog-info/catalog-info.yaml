@@ -13,3 +13,4 @@ metadata:
 spec:
   type: ${{ values.applicationType }}
   lifecycle: production
+  owner: rhdh
