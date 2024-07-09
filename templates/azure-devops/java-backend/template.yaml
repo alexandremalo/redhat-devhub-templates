@@ -29,28 +29,19 @@ spec:
             - amalo
             - demo-cn
           description: The Organization that this repo will belong to
+        projectName:
+          title: Project
+          type: string
+          enum:
+            - public-website
+            - intranet-webiste
+            - billing-engine
+            - traffic-management
+          description: The Project that this repo will belong to
         repoName:
           title: Repository
           type: string
           description: The name of the repository
-      dependencies:
-        orgName:
-          allOf:
-            - if:
-                properties:
-                  orgName:
-                    const: demo-cn
-              then:
-              properties:
-                projectName:
-                  title: Project
-                  type: string
-                  enum:
-                    - public-website
-                    - intranet-webiste
-                    - billing-engine
-                    - traffic-management
-                  description: The Project that this repo will belong to
 
     - title: Provide information about the new component
       required:
@@ -59,8 +50,7 @@ spec:
         name:
           title: Name
           type: string
-          default: ${{ parameters.repoName }}
-          description: The name of the component
+          description: The name of the component (leave empty to re-use Repository name)
         description:
           title: Description
           type: string
