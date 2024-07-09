@@ -29,12 +29,14 @@ spec:
             - amalo
             - demo-cn
           description: The Organization that this repo will belong to
-        allOf:
-          - if:
-            properties:
-              orgName:
-                const: demo-cn
-            then:
+      dependencies:
+        includeName:
+          allOf:
+            - if:
+                properties:
+                  orgName:
+                    const: demo-cn
+              then:
               properties:
                 projectName:
                   title: Project
@@ -44,7 +46,7 @@ spec:
                     - intranet-webiste
                     - billing-engine
                     - traffic-management
-          description: The Project that this repo will belong to
+                  description: The Project that this repo will belong to
         repoName:
           title: Repository
           type: string
