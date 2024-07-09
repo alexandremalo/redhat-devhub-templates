@@ -1,21 +1,9 @@
-{%- if values.componentName %}
-  {%- set name = values.componentName %}
-{%- else %}
-  {%- set name = values.repoName %}
-{% endif -%}
-
 apiVersion: backstage.io/v1alpha1
-{%- if values.entityKind %}
-kind: ${{ values.entityKind }}
-{%- else %}
 kind: Component
-{%- endif %}
 metadata:
-  name: ${{ name }}
+  name: ${{ values.repoName }}
   owner: ${{ values.owner }}
-  {%- if values.title %}
-  title: ${{ values.title }}
-  {%- endif %}
+  title: ${{ values.name }}
   {%- if values.description %}
   description: ${{ values.description }}
   {%- endif %}

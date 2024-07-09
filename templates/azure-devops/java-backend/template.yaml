@@ -63,7 +63,7 @@ spec:
           # azure devops uses `my-project/my-repo`
           orgName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
-          title: ${{ parameters.name }}
+          name: ${{ parameters.name }}
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           applicationType: website
@@ -77,10 +77,10 @@ spec:
         values:
           # azure devops uses `my-project/my-repo`
           orgName: ${{ parameters.projectName }}
+          name: ${{ parameters.name }}
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
-          title: ${{ parameters.name }}
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           applicationType: website
