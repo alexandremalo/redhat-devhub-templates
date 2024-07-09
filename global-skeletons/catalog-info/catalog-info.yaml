@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: '${{ values.repoName }}'
-  owner: rhdh
+  owner: user1
   title: '${{ values.name }}'
   {%- if values.description %}
   description: ${{ values.description }}
@@ -22,3 +22,17 @@ spec:
   type: ${{ values.applicationType }}
   lifecycle: production
   owner: rhdh
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: '${{ values.repoName }}'
+  description: ${{ values.description }}
+spec:
+  type: openapi
+  lifecycle: production
+  owner: user1
+  definition:
+    $text: ./openapi.yaml
+
