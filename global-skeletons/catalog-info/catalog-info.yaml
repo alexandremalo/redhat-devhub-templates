@@ -1,9 +1,9 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.repoName }}
-  owner: ${{ values.owner }}
-  title: ${{ values.name }}
+  name: '${{ values.repoName }}'
+  owner: '${{ values.owner }}'
+  title: '${{ values.name }}'
   {%- if values.description %}
   description: ${{ values.description }}
   {%- endif %}
