@@ -11,7 +11,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
   links:
-    - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#git@ssh.dev.azure.com:v3/${{ values.orgName }}/${{ values.projectName }}/${{ values.repoName }}
+    - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
       title: OpenShift Dev Spaces (VS Code)
       icon: web
     - url: vscode://vscode.git/clone?url=git@ssh.dev.azure.com:v3/${{ values.orgName }}/${{ values.projectName }}/${{ values.repoName }}
