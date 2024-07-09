@@ -24,10 +24,26 @@ spec:
         orgName:
           title: Organization
           type: string
+          default: demo-cn
+          enum:
+            - amalo
+            - demo-cn
           description: The Organization that this repo will belong to
-        projectName:
-          title: Project
-          type: string
+        allOf:
+          - if:
+            properties:
+              orgName:
+                const: demo-cn
+            then:
+              properties:
+                projectName:
+                  title: Project
+                  type: string
+                  enum:
+                    - public-website
+                    - intranet-webiste
+                    - billing-engine
+                    - traffic-management
           description: The Project that this repo will belong to
         repoName:
           title: Repository
