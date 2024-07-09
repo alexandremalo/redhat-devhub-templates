@@ -24,7 +24,7 @@ stages:
       displayName: Build an image
       inputs:
         command: buildAndPush
-        containerRegistry: 'quay-demo-alex-malo'
+        containerRegistry: 'local-demo-quay-registry'
         repository: '${{ values.orgName }}/${{ values.repoName }}'
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
