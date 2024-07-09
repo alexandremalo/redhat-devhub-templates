@@ -82,7 +82,8 @@ spec:
         url: ./skeleton
         values:
           # azure devops uses `my-project/my-repo`
-          orgName: ${{ parameters.projectName }}
+          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
           name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
           description: ${{ parameters.description }}
@@ -97,7 +98,8 @@ spec:
         url: ../../../global-skeletons/catalog-info/
         values:
           # azure devops uses `my-project/my-repo`
-          orgName: ${{ parameters.projectName }}
+          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
           name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
