@@ -10,7 +10,7 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.
     dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
-    quay.io/repository-slug: quay.io/quay.io/alexmalo/${{ values.repoName }}
+    quay.io/repository-slug: quay.io/alexmalo/${{ values.repoName }}
   links:
     - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
       title: OpenShift Dev Spaces (VS Code)
