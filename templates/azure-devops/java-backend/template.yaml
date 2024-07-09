@@ -38,11 +38,11 @@ spec:
       required:
         - port
       properties:
-        title:
-          title: Title
+        name:
+          title: Name
           type: string
-          default: please-give-me-a-name
-          description: The title of the component
+          default: ${{ parameters.repoName }}
+          description: The name of the component
         description:
           title: Description
           type: string
@@ -63,7 +63,7 @@ spec:
           # azure devops uses `my-project/my-repo`
           orgName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
-          title: ${{ parameters.title }}
+          title: ${{ parameters.name }}
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           applicationType: website
@@ -80,7 +80,7 @@ spec:
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
-          title: ${{ parameters.title }}
+          title: ${{ parameters.name }}
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           applicationType: website
