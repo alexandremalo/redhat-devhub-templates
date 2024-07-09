@@ -12,6 +12,7 @@ kind: Component
 {%- endif %}
 metadata:
   name: ${{ name }}
+  owner: ${{ values.owner }}
   {%- if values.title %}
   title: ${{ values.title }}
   {%- endif %}
