@@ -29,6 +29,10 @@ spec:
             - amalo
             - demo-cn
           description: The Organization that this repo will belong to
+        repoName:
+          title: Repository
+          type: string
+          description: The name of the repository
       dependencies:
         includeName:
           allOf:
@@ -47,10 +51,6 @@ spec:
                     - billing-engine
                     - traffic-management
                   description: The Project that this repo will belong to
-        repoName:
-          title: Repository
-          type: string
-          description: The name of the repository
 
     - title: Provide information about the new component
       required:
