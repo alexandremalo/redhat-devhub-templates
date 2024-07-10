@@ -133,7 +133,7 @@ spec:
         values:
           component_id: ${{ parameters.repoName }}
           description: ${{ parameters.description }}
-          destination: https://dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
+          destination: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
           source_repository: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/repo=${{ parameters.repoName }}-gitops
           repository_name: ${{ parameters.repoName }}
           git_owner: ${{ parameters.repoName }}
