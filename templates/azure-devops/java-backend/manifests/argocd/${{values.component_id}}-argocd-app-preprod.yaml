@@ -18,6 +18,8 @@ spec:
         value: ${{ values.component_id }}-preprod
       - name: environment
         value: preprod
+      - name: image.registry
+        value: Quay
       - name: image.tag
         value: preprod
   destination:
