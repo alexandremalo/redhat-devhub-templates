@@ -124,16 +124,16 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: /catalog-info.yaml
 
-    - id: create-container-registry
-      name: Creating the container registry repository
-      action: quay:create-repository
-      input:
-        name: ${{ parameters.repoName }}
-        visibility: public
-        description: Image repository for ${{ parameters.repoName }}
-        token: test
-        baseUrl: "https://quay-lpq8z.apps.cluster-lpq8z.sandbox2416.opentlc.com/"
-        namespace: ${{ parameters.orgName }}
+    #- id: create-container-registry
+    #  name: Creating the container registry repository
+    #  action: quay:create-repository
+    #  input:
+    #    name: ${{ parameters.repoName }}
+    #    visibility: public
+    #    description: Image repository for ${{ parameters.repoName }}
+    #    token: test
+    #    baseUrl: "https://quay-lpq8z.apps.cluster-lpq8z.sandbox2416.opentlc.com/"
+    #    namespace: ${{ parameters.orgName }}
         
     - id: template-gitops-deployment
       name: Generating Deployment Resources
