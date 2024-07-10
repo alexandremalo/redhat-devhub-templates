@@ -131,7 +131,7 @@ spec:
         name: ${{ parameters.repoName }}
         visibility: public
         description: Image repository for ${{ parameters.repoName }}
-        #token: ${QUAY_LOCAL_TOKEN}
+        token: ''
         baseUrl: "https://quay-lpq8z.apps.cluster-lpq8z.sandbox2416.opentlc.com/"
         namespace: ${{ parameters.orgName }}
         
