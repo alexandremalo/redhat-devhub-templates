@@ -157,7 +157,7 @@ spec:
           image_tag: latest
           port: 8080
           repository_host: ${{ parameters.repo.host }}
-          deployment_name: quarkus-template
+          deployment_name: ${{ parameters.repoName }}
           user: user1
         targetPath: ./tenant-gitops
 
