@@ -24,6 +24,8 @@ spec:
   type: ${{ values.applicationType }}
   lifecycle: production
   owner: user1
+  providesApis:
+    - ${{ values.projectName }}
 
 ---
 apiVersion: backstage.io/v1alpha1
