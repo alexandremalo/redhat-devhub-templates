@@ -9,4 +9,5 @@ RUN mvn clean install -Dmaven.test.skip=true
 FROM eclipse-temurin:21-jre
 WORKDIR /opt/demo
 COPY --from=stage1 /opt/demo/target/*.jar /opt/demo/demo.jar
+CMD java -jar /opt/demo/demo.jar
 
