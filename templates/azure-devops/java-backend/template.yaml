@@ -97,16 +97,16 @@ spec:
       input:
         url: ../../../global-skeletons/catalog-info/
         values:
-        orgName: ${{ parameters.orgName }}
-        projectName: ${{ parameters.projectName }}
-        name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
-        repoName: ${{ parameters.repoName }}
-        owner: ${{ parameters.owner }}
-        system: ${{ parameters.system }}
-        description: ${{ parameters.description }}
-        port: ${{ parameters.port }}
-        applicationType: website
-        sourceControl: dev.azure.com
+          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
+          name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
+          repoName: ${{ parameters.repoName }}
+          owner: ${{ parameters.owner }}
+          system: ${{ parameters.system }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          applicationType: website
+          sourceControl: dev.azure.com
 
     - id: publish
       name: Publishing to the Source Code Repository
