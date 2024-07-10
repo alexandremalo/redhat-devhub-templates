@@ -75,55 +75,66 @@ spec:
                     type: string
 
   steps:
-    #- id: sourceCodeTemplate
-    #  name: Generating the Source Code Component
-    #  action: fetch:template
-    #  input:
-    #    url: ./skeleton
-    #    values:
-    #      # azure devops uses `my-project/my-repo`
-    #      orgName: ${{ parameters.orgName }}
-    #      projectName: ${{ parameters.projectName }}
-    #      repoName: ${{ parameters.repoName }}
-    #      name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
-    #      description: ${{ parameters.description }}
-    #      port: ${{ parameters.port }}
-    #      applicationType: website
-    #      sourceControl: dev.azure.com
+    - id: sourceCodeTemplate
+      name: Generating the Source Code Component
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          # azure devops uses `my-project/my-repo`
+          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
+          repoName: ${{ parameters.repoName }}
+          name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          applicationType: website
+          sourceControl: dev.azure.com
 
-    #- id: catalogTemplate
-    #  name: Generating the Catalog Info Component
-    #  action: fetch:template
-    #  input:
-    #    url: ../../../global-skeletons/catalog-info/
-    #    values:
-    #      orgName: ${{ parameters.orgName }}
-    #      projectName: ${{ parameters.projectName }}
-    #      name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
-    #      repoName: ${{ parameters.repoName }}
-    #      owner: ${{ parameters.owner }}
-    #      system: ${{ parameters.system }}
-    #      description: ${{ parameters.description }}
-    #      port: ${{ parameters.port }}
-    #      applicationType: website
-    #      sourceControl: dev.azure.com
+    - id: catalogTemplate
+      name: Generating the Catalog Info Component
+      action: fetch:template
+      input:
+         url: ../../../global-skeletons/catalog-info/
+         values:
+         orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
+          name: ${{ parameters.customName if parameters.customName else parameters.repoName }}
+          repoName: ${{ parameters.repoName }}
+          owner: ${{ parameters.owner }}
+          system: ${{ parameters.system }}
+          description: ${{ parameters.description }}
+          port: ${{ parameters.port }}
+          applicationType: website
+          sourceControl: dev.azure.com
 
-    #- id: publish
-    #  name: Publishing to the Source Code Repository
-    #  action: publish:azure
-    #  input:
-    #    allowedHosts: ['dev.azure.com']
-    #    description: ${{ parameters.description }}
-    #    repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
-    #    defaultBranch: main
+    - id: publish
+      name: Publishing to the Source Code Repository
+      action: publish:azure
+      input:
+        allowedHosts: ['dev.azure.com']
+        description: ${{ parameters.description }}
+        repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
+        defaultBranch: main
 
-    #- id: register
-    #  name: Registering the Catalog Info Component
-    #  action: catalog:register
-    #  input:
-    #    repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-    #    catalogInfoPath: /catalog-info.yaml
+    - id: register
+      name: Registering the Catalog Info Component
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
 
+    #- id: create-container-registry
+    #  name: Creating the container registry repository
+    #  action: quay:create-repository
+    #  input:
+    #    name: ${{ parameters.repoName }}
+    #    visibility: public
+    #    description: Image repository for ${{ parameters.repoName }}
+    #    token: ${QUAY_LOCAL_TOKEN}
+    #    baseUrl: "https://quay-lpq8z.apps.cluster-lpq8z.sandbox2416.opentlc.com/"
+    #    namespace: ${{ parameters.orgName }}
+        
     - id: template-gitops-deployment
       name: Generating Deployment Resources
       action: fetch:template
