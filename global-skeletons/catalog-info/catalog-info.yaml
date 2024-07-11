@@ -20,6 +20,9 @@ metadata:
     - url: vscode://vscode.git/clone?url=git@ssh.dev.azure.com:v3/${{ values.orgName }}/${{ values.projectName }}/${{ values.repoName }}
       title: Local dev (VS Code)
       icon: web
+    - url: https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}-gitops?path=%2F
+      title: Gitops Manifests
+      icon: web
 spec:
   type: ${{ values.applicationType }}
   lifecycle: production
