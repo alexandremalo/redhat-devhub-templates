@@ -24,19 +24,19 @@ spec:
         orgName:
           title: Organization
           type: string
-          default: demo-cn
+          default: demo-devhub
           enum:
             - amalo
-            - demo-cn
+            - demo-devhub
           description: The Organization that this repo will belong to
         projectName:
           title: Project
           type: string
           enum:
-            - public-website
-            - intranet-webiste
-            - billing-engine
-            - traffic-management
+            - application-A
+            - application-B
+            - application-C
+            - application-D
           description: The Project that this repo will belong to
         repoName:
           title: Repository
@@ -149,13 +149,13 @@ spec:
           source_repository: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/repo=${{ parameters.repoName }}-gitops
           repository_name: ${{ parameters.repoName }}
           git_owner: ${{ parameters.repoName }}
-          cluster: .apps.cluster-lpq8z.sandbox2416.opentlc.com
+          cluster: .apps.ocp.malo.lab
           namespace: ${{ parameters.repoName }}-dev
           image_registry: ${{ parameters.image_registry }}
-          image_host: quay-lpq8z.apps.cluster-lpq8z.sandbox2416.opentlc.com
-          image_organization: ${{ parameters.orgName }}
-          image_name: ${{ parameters.repoName }}
-          image_tag: latest
+          image_host: quay.io
+          image_organization: alexmalo
+          image_name: devhub-demo
+          image_tag: ${{ parameters.repoName }}-latest
           port: 8080
           repository_host: ${{ parameters.repo.host }}
           deployment_name: ${{ parameters.repoName }}
