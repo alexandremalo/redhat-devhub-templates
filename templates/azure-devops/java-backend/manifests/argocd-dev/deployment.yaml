@@ -1,55 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${{values.deployment_name}}
+  name: ${{ values.component_id }}-dev
+  namespace: alex-gitops-apps
   labels:
-    {{- include "backstage.labels" . | nindent 4 }}
-    {{- include "quarkus-template.labels" . | nindent 4 }}
+    app: ${{ values.component_id }}-dev
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "quarkus-template.selectorLabels" . | nindent 6 }}
+      app: ${{ values.component_id }}-dev
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
-        {{- include "backstage.labels" . | nindent 8 }}
-        {{- include "quarkus-template.selectorLabels" . | nindent 8 }}
+       app: ${{ values.component_id }}-dev
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      serviceAccountName: {{ include "quarkus-template.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: {{ include "quarkus-template.image" . }}
+          image: quay.io/alexmalo/devhub-demo:${{ values.component_id }}-dev
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP          
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: Always
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
-      nodeSelector:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.affinity }}
-      affinity:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
-      {{- with .Values.tolerations }}
-      tolerations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
