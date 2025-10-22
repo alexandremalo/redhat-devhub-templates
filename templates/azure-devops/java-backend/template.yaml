@@ -37,6 +37,7 @@ spec:
             - application-B
             - application-C
             - application-D
+            - test
           description: The Project that this repo will belong to
         repoName:
           title: Repository
@@ -114,7 +115,7 @@ spec:
       input:
         allowedHosts: ['dev.azure.com']
         description: ${{ parameters.description }}
-        repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}&organization=${{ parameters.orgName }}
+        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project={{ parameters.projectName }}&repo=${{ parameters.repoName }}
         defaultBranch: main
 
     - id: register
