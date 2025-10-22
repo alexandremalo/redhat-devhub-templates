@@ -16,7 +16,7 @@ spec:
        app: ${{ values.component_id }}-dev
     spec:
       containers:
-        - name: {{ .Chart.Name }}
+        - name: container
           image: quay.io/alexmalo/devhub-demo:${{ values.component_id }}-dev
           ports:
             - name: http
