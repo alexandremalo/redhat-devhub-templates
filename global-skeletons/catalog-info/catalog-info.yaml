@@ -9,18 +9,22 @@ metadata:
   {%- endif %}
   annotations:
     backstage.io/techdocs-ref: dir:.
-    dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
-    quay.io/repository-slug: ${{ values.orgName }}/${{ values.repoName }}
-    argocd/app-selector: rht-gitops.com/janus-argocd=${{ values.repoName }}-bootstrap
+    #dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
+    github.com/project-slug: alexandremalo/${{ values.repoName }}
+    quay.io/repository-slug: alexmalo/devhub-demo
+    argocd/app-selector: rht-gitops.com/janus-argocd=${{ values.repoName }}-dev
     backstage.io/kubernetes-id: ${{ values.repoName }}
   links:
-    - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
-      title: OpenShift Dev Spaces (VS Code)
+    - url: http://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
+      title: Dev External Route
       icon: web
-    - url: vscode://vscode.git/clone?url=git@ssh.dev.azure.com:v3/${{ values.orgName }}/${{ values.projectName }}/${{ values.repoName }}
+    # - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
+    #   title: OpenShift Dev Spaces (VS Code)
+    #   icon: web
+    - url: vscode://vscode.git/clone?url=git@github.com:alexandremalo/${{ values.repoName }}.git
       title: Local dev (VS Code)
       icon: web
-    - url: https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}-gitops?path=/
+    - url: https://github.com/alexandremalo/${{ values.repoName }}-gitops
       title: Gitops Manifests
       icon: web
 spec:
