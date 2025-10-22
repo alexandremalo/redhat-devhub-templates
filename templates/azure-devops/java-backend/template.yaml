@@ -141,8 +141,6 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        copyWithoutTemplating:
-          - azure-pipelines.yml
         values:
           component_id: ${{ parameters.repoName }}
           description: ${{ parameters.description }}
@@ -177,11 +175,11 @@ spec:
       name: Create ArgoCD Resources
       action: argocd:create-resources
       input:
-        appName: ${{ parameters.repoName }}-bootstrap
+        appName: ${{ parameters.repoName }}-dev
         argoInstance: malolab
         namespace: alex-gitops
         repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
-        path: 'argocd/'
+        path: 'argocd-dev/'
  
   output:
     links:
