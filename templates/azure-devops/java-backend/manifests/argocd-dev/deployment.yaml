@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ${{ values.component_id }}-dev
-  namespace: alex-gitops-apps
+  namespace: alex-gitops
   labels:
     app: ${{ values.component_id }}-dev
 spec:
