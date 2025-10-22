@@ -29,4 +29,4 @@ jobs:
 
       - name: Push image
         run: |
-          podman push quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}:latest
+          podman push quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}-dev
