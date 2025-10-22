@@ -160,7 +160,7 @@ spec:
           port: 8080
           repository_host: ${{ parameters.repo.host }}
           deployment_name: ${{ parameters.repoName }}
-          user: user1
+          user: alex
         targetPath: ./tenant-gitops
 
     - id: publish-gitops
@@ -179,7 +179,7 @@ spec:
       input:
         appName: ${{ parameters.repoName }}-bootstrap
         argoInstance: malolab
-        namespace: janus-argocd
+        namespace: alex-gitops
         repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd/'
  
