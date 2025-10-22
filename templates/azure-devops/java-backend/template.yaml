@@ -10,7 +10,7 @@ metadata:
     - java
     - azure
 spec:
-  owner: alex-malo
+  owner: architects
   system: rhdh
   type: service
 
