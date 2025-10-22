@@ -170,7 +170,7 @@ spec:
         sourcePath: ./tenant-gitops
         allowedHosts: ['dev.azure.com']
         description: gitops resources for ${{ parameters.repoName }}
-        repoUrl: dev.azure.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}-gitops&organization=${{ parameters.orgName }}
+        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}-gitops
         defaultBranch: main
 
     - id: create-argocd-resources
