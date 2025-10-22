@@ -178,7 +178,7 @@ spec:
       action: argocd:create-resources
       input:
         appName: ${{ parameters.repoName }}-bootstrap
-        argoInstance: main
+        argoInstance: malolab
         namespace: janus-argocd
         repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd/'
