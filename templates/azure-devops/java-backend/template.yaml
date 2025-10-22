@@ -107,16 +107,29 @@ spec:
           description: ${{ parameters.description }}
           port: ${{ parameters.port }}
           applicationType: website
-          sourceControl: dev.azure.com
+          sourceControl: github.com
 
     - id: publish
-      name: Publishing to the Source Code Repository
-      action: publish:azure
+      name: Publish
+      action: publish:github
       input:
-        allowedHosts: ['dev.azure.com']
+        allowedHosts:
+          - github.com
         description: ${{ parameters.description }}
-        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}
+        repoUrl: github.com?owner=alexandremalo&repo=${{ parameters.repoName }}
+        repoVisibility: 'public'
         defaultBranch: main
+        protectDefaultBranch: false
+        gitAuthorName: 'Red Hat Developer Hub'
+
+    # - id: publish
+    #   name: Publishing to the Source Code Repository
+    #   action: publish:azure
+    #   input:
+    #     allowedHosts: ['dev.azure.com']
+    #     description: ${{ parameters.description }}
+    #     repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}
+    #     defaultBranch: main
 
     - id: register
       name: Registering the Catalog Info Component
@@ -161,15 +174,28 @@ spec:
           user: alex
         targetPath: ./tenant-gitops
 
-    - id: publish-gitops
-      name: Publishing to Resource Repository
-      action: publish:azure
+    - id: publish
+      name: Publish
+      action: publish:github
       input:
-        sourcePath: ./tenant-gitops
-        allowedHosts: ['dev.azure.com']
-        description: gitops resources for ${{ parameters.repoName }}
-        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}-gitops
+        allowedHosts:
+          - github.com
+        description: ${{ parameters.description }}
+        repoUrl: github.com?owner=alexandremalo&repo=${{ parameters.repoName }}-gitops
+        repoVisibility: 'public'
         defaultBranch: main
+        protectDefaultBranch: false
+        gitAuthorName: 'Red Hat Developer Hub'
+
+    # - id: publish-gitops
+    #   name: Publishing to Resource Repository
+    #   action: publish:azure
+    #   input:
+    #     sourcePath: ./tenant-gitops
+    #     allowedHosts: ['dev.azure.com']
+    #     description: gitops resources for ${{ parameters.repoName }}
+    #     repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}-gitops
+    #     defaultBranch: main
 
     - id: create-argocd-resources
       name: Create ArgoCD Resources
@@ -178,7 +204,8 @@ spec:
         appName: ${{ parameters.repoName }}-dev
         argoInstance: malolab
         namespace: alex-gitops
-        repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
+        repoUrl: https://github.com/alexandremalo/${{ parameters.repoName }}-gitops.git
+        #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd-dev/'
  
   output:
