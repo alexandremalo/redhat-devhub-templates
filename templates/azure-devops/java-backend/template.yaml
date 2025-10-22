@@ -115,7 +115,7 @@ spec:
       input:
         allowedHosts: ['dev.azure.com']
         description: ${{ parameters.description }}
-        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project={{ parameters.projectName }}&repo=${{ parameters.repoName }}
+        repoUrl: dev.azure.com?organization=${{ parameters.orgName }}&project=${{ parameters.projectName }}&repo=${{ parameters.repoName }}
         defaultBranch: main
 
     - id: register
