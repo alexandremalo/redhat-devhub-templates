@@ -7,3 +7,10 @@ spec:
   to:
     kind: Service
     name: ${{ values.component_id }}-dev
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
