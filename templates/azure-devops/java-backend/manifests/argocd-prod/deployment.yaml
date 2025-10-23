@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${{ values.component_id }}-dev
+  name: ${{ values.component_id }}-prod
   namespace: alex-gitops
   labels:
-    app: ${{ values.component_id }}-dev
+    app: ${{ values.component_id }}-prod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${{ values.component_id }}-dev
+      app: ${{ values.component_id }}-prod
   template:
     metadata:
       labels:
-       app: ${{ values.component_id }}-dev
+       app: ${{ values.component_id }}-prod
     spec:
       containers:
         - name: container
-          image: quay.io/alexmalo/devhub-demo:${{ values.component_id }}-dev
+          image: quay.io/alexmalo/devhub-demo:${{ values.component_id }}-latest
           ports:
             - name: http
               containerPort: 8080
@@ -25,7 +25,7 @@ spec:
           imagePullPolicy: Always
           resources:
             limits:
-              cpu: 100m
+              cpu: 500m
               memory: 128Mi
             requests:
               cpu: 50m

@@ -1,12 +1,12 @@
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: ${{ values.component_id }}-dev
+  name: ${{ values.component_id }}-preprod
   namespace: alex-gitops
 spec:
   to:
     kind: Service
-    name: ${{ values.component_id }}-dev
+    name: ${{ values.component_id }}-preprod
     weight: 100
   port:
     targetPort: http
