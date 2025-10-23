@@ -21,10 +21,10 @@ metadata:
     # - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
     #   title: OpenShift Dev Spaces (VS Code)
     #   icon: web
-    - url: vscode://vscode.git/clone?url=git@github.com:alexandremalo/${{ values.repoName }}.git
+    - url: vscode://vscode.git/clone?url=git@github.com:demo-malolab/${{ values.repoName }}.git
       title: Local dev (VS Code)
       icon: web
-    - url: https://github.com/alexandremalo/${{ values.repoName }}-gitops
+    - url: https://github.com/demo-malolab/${{ values.repoName }}-gitops
       title: Gitops Manifests
       icon: web
 spec:
