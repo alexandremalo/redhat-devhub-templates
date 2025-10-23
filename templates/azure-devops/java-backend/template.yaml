@@ -2,13 +2,17 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: azure-java-backend-template
-  title: Create a SpringBoot backend application in Azure DevOps with a CI pipeline
-  description: Create a starter SpringBoot backend application with a CI pipeline
+  title: Create a Java SpringBoot application on Github with a CI/CD pipeline
+  description:  Starter Java 21 SpringBoot application tracked on Github, CI with Github Actions, CD with ArgoCD, deployed on OpenShift 
   tags:
     - recommended
     - springboot
     - java
-    - azure
+    - backend
+    - github
+    - github-actions
+    - argocd
+    - openshift
 spec:
   owner: architects
   system: rhdh
@@ -205,9 +209,11 @@ spec:
       action: argocd:create-resources
       input:
         appName: ${{ parameters.repoName }}-dev
+        projectName: default
         argoInstance: malolab
         namespace: alex-gitops
         repoUrl: https://github.com/demo-malolab/${{ parameters.repoName }}-gitops.git
+        labelValue: ${{ parameters.repoName }}
         #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd-dev/'
  

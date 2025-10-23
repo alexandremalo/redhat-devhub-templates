@@ -12,8 +12,8 @@ metadata:
     #dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
     github.com/project-slug: demo-malolab/${{ values.repoName }}
     quay.io/repository-slug: alexmalo/devhub-demo
-    argocd/app-selector: name=${{ values.repoName }}-dev
-    backstage.io/kubernetes-id: ${{ values.repoName }}
+    argocd/app-selector: ${{ values.repoName }}
+    backstage.io/kubernetes-id: ${{ values.repoName }}-dev
   links:
     - url: http://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
       title: Dev External Route
