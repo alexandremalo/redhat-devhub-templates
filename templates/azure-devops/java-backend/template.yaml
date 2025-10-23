@@ -207,7 +207,7 @@ spec:
         appName: ${{ parameters.repoName }}-dev
         argoInstance: malolab
         namespace: alex-gitops
-        repoUrl: https://github.com/alexandremalo/${{ parameters.repoName }}-gitops.git
+        repoUrl: https://github.com/demo-malolab/${{ parameters.repoName }}-gitops.git
         #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd-dev/'
  

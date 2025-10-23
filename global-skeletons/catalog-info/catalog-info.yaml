@@ -10,9 +10,9 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.
     #dev.azure.com/project-repo: ${{ values.projectName }}/${{ values.repoName }}
-    github.com/project-slug: alexandremalo/${{ values.repoName }}
+    github.com/project-slug: demo-malolab/${{ values.repoName }}
     quay.io/repository-slug: alexmalo/devhub-demo
-    argocd/app-selector: rht-gitops.com/janus-argocd=${{ values.repoName }}-dev
+    argocd/app-selector: name=${{ values.repoName }}-dev
     backstage.io/kubernetes-id: ${{ values.repoName }}
   links:
     - url: http://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
