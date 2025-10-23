@@ -209,7 +209,6 @@ spec:
       action: argocd:create-resources
       input:
         appName: ${{ parameters.repoName }}-dev
-        projectName: default
         argoInstance: malolab
         namespace: alex-gitops
         repoUrl: https://github.com/demo-malolab/${{ parameters.repoName }}-gitops.git
