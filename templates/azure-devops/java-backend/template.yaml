@@ -205,7 +205,7 @@ spec:
     #     defaultBranch: main
 
     - id: create-argocd-resources
-      name: Create ArgoCD Resources
+      name: Create ArgoCD Resources (Dev)
       action: argocd:create-resources
       input:
         appName: ${{ parameters.repoName }}-dev
@@ -215,6 +215,30 @@ spec:
         labelValue: ${{ parameters.repoName }}
         #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
         path: 'argocd-dev/'
+
+    - id: create-argocd-resources
+      name: Create ArgoCD Resources (Preprod)
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.repoName }}-preprod
+        argoInstance: malolab
+        namespace: alex-gitops
+        repoUrl: https://github.com/demo-malolab/${{ parameters.repoName }}-gitops.git
+        labelValue: ${{ parameters.repoName }}
+        #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
+        path: 'argocd-preprod/'
+
+    - id: create-argocd-resources
+      name: Create ArgoCD Resources (Prod)
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.repoName }}-prod
+        argoInstance: malolab
+        namespace: alex-gitops
+        repoUrl: https://github.com/demo-malolab/${{ parameters.repoName }}-gitops.git
+        labelValue: ${{ parameters.repoName }}
+        #repoUrl: https://${{ parameters.orgName }}@dev.azure.com/${{ parameters.orgName }}/${{ parameters.projectName }}/_git/${{ parameters.repoName }}-gitops
+        path: 'argocd-prod/'
  
   output:
     links:

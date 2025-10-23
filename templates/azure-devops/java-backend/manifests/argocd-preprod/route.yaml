@@ -1,0 +1,16 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ${{ values.component_id }}-dev
+  namespace: alex-gitops
+spec:
+  to:
+    kind: Service
+    name: ${{ values.component_id }}-dev
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
