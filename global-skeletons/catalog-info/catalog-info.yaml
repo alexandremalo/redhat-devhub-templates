@@ -15,7 +15,7 @@ metadata:
     argocd/app-selector: backstage-name=${{ values.repoName }}
     backstage.io/kubernetes-id: ${{ values.repoName }}-dev
   links:
-    - url: http://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
+    - url: https://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
       title: Dev External Route
       icon: web
     # - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
