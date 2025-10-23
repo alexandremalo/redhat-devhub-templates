@@ -18,10 +18,10 @@ metadata:
     - url: https://${{ values.repoName }}-dev-alex-gitops.apps.ocp.malo.lab/
       title: Dev External Route
       icon: web
-    - url: https://${{ values.repoName }}-preprop-alex-gitops.apps.ocp.malo.lab/
+    - url: https://${{ values.repoName }}-preprod-alex-gitops.apps.ocp.malo.lab/
       title: Preprod External Route
       icon: web
-    - url: https://${{ values.repoName }}-prop-alex-gitops.apps.ocp.malo.lab/
+    - url: https://${{ values.repoName }}-prod-alex-gitops.apps.ocp.malo.lab/
       title: Prod External Route
       icon: web
     # - url: https://devspaces.apps.cluster-lpq8z.sandbox2416.opentlc.com/#https://${{ values.orgName }}@dev.azure.com/${{ values.orgName }}/${{ values.projectName }}/_git/${{ values.repoName }}
