@@ -25,8 +25,8 @@ jobs:
 
       - name: Build image
         run: |
-          podman build -t quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}-dev .
+          podman build -t quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}-latest .
 
       - name: Push image
         run: |
-          podman push quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}-dev
+          podman push quay.io/alexmalo/devhub-demo:${{ github.event.repository.name }}-latest
